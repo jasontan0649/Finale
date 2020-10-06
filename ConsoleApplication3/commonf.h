@@ -39,7 +39,4 @@ char getCh();
 char getChoice(char, char);
 int selVector(vector<string>, string extra = "null");
 
-//Display Data
-void displayData(string, vector<string>, vector<string>, vector<vector<double>>);
-
 #endif

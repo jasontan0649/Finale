@@ -16,6 +16,8 @@
 
 using namespace std;
 
+//Tan Kai Yuan
+void displayData(string, vector<string>, vector<string>, vector<vector<double>>);
 
 //Boe Chang Horn
 void displayHisto(string, vector<string>, vector<int>, string, int);
@@ -25,6 +27,19 @@ void displayTwoTable(string, double, vector<vector<double>>, vector<double>, vec
 
 //Chan Yun Hong
 void displayPCLROutput(string, vector<string>, vector<string>, vector<vector<string>>, vector<vector<double>>, double, double, double);
+
+
+
+void displayData(string title, vector<string> row, vector<string> col, vector<vector<double>> data) {
+	PrintTableByVect(title, row, col, data); //display data
+	cout << endl;
+
+	exportHTML(title + ".html", title, row, col, data);
+	exportTxt(title + ".txt", title, row, col, data);
+
+	cout << "Data has been exported. Please press any key to continue" << endl;
+	getCh();
+}
 
 
 void displayHisto(string title, vector<string> markRange, vector<int> freq, string starUnit, int n) {		// output histogram table

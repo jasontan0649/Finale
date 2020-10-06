@@ -8,6 +8,9 @@ using namespace std;
 #ifndef DISPLAY_H_
 #define DISPLAY_H_
 
+//Tan Kai Yuan
+void displayData(string, vector<string>, vector<string>, vector<vector<double>>);
+
 //Boe Chang Horn
 void displayHisto(string, vector<string>, vector<int>, string, int);
 

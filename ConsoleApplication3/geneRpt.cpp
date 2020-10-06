@@ -5,6 +5,7 @@
 #include <functional>
 
 #include "commonf.h"
+#include "display.h"
 
 #include "statistic.h"
 #include "exporthtml.h"

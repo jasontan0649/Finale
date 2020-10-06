@@ -14,10 +14,6 @@
 #include <vector>
 #include <string>
 
-//export data and table
-#include "exporthtml.h"
-#include "table.h"
-
 using namespace std;
 
 //Tan Kai Yuan
@@ -52,9 +48,6 @@ void clrScr();
 char getCh();
 char getChoice(char, char);
 int selVector(vector<string>, string extra = "null");
-
-//Display Data
-void displayData(string, vector<string>, vector<string>, vector<vector<double>>);
 
 
 //common function
@@ -235,16 +228,4 @@ int selVector(vector<string> vect, string extra) {
 	char c = getChoice('1', size + 48); //get selection
 	cout << c << endl; //print selection
 	return c - 49; //get index from input
-}
-
-//Display data
-void displayData(string title, vector<string> row, vector<string> col, vector<vector<double>> data) {
-	PrintTableByVect(title, row, col, data); //display data
-	cout << endl;
-
-	exportHTML(title + ".html", title, row, col, data);
-	exportTxt(title + ".txt", title, row, col, data);
-
-	cout << "Data has been exported. Please press any key to continue" << endl;
-	getCh();
 }

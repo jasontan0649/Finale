@@ -7,6 +7,9 @@
 //common function
 #include "commonf.h" 
 
+//display function
+#include "display.h"
+
 //readFile
 #include "loadfile.h"
 
