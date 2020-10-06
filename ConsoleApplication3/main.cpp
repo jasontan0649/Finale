@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <functional>
 
 //common function
 #include "commonf.h" 
@@ -14,15 +15,25 @@
 //Computation functions
 #include "computeMenu.h"
 
+//generate report
+#include "geneRpt.h"
+
 using namespace std;
 
+//main menu function
 char mainMenu();
-void sortByColMenu(vector<string>, vector<vector<double>>&);
 bool exit();
+
+/*
+Display and Export Data in another cpp 
+& Computation Menu in computeMenu.cpp
+*/
+
+//sort data by column menu
+void sortByColMenu(vector<string>, vector<vector<double>>&);
 
 //open file
 string openFile(vector<string>&, vector<vector<double>>&, vector<vector<double>>&);
-
 
 
 //Menu Function
@@ -70,6 +81,13 @@ bool exit() {
 	return false;
 }
 
+//open file
+string openFile(vector<string>& title, vector<vector<double>>& data, vector<vector<double>>& dataTp) {
+	string fileName = loadFile(title, data);
+	dataTp = transposeV(data);
+	return fileName;
+}
+
 int main() {
 	//initialize variable
 	vector<string> title;
@@ -88,19 +106,11 @@ int main() {
 		switch (c) {
 		case '1': fileName = openFile(title, data, dataTp); break;
 		case '2': displayData("Data Output", {}, title, data); break;
-		case '3': computeFunc(title, dataTp); break; //havent code
+		case '3': computeFunc(title, dataTp); break; 
 		case '4': sortByColMenu(title, data); break;
-		case '5': cout << "Generate Report"; break;
+		case '5': geneReport(title, dataTp); break;
 		case '6': if (exit()) return 0;
 		}
 	}
 	return 0;
 }
-
-//open file
-string openFile(vector<string>& title, vector<vector<double>>& data, vector<vector<double>>& dataTp) {
-	string fileName = loadFile(title, data);
-	dataTp = transposeV(data);
-	return fileName;
-}
-

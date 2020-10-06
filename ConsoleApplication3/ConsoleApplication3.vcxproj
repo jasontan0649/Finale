@@ -23,6 +23,7 @@
     <ClCompile Include="computeMenu.cpp" />
     <ClCompile Include="distinct.cpp" />
     <ClCompile Include="exporthtml.cpp" />
+    <ClCompile Include="geneRpt.cpp" />
     <ClCompile Include="histogram.cpp" />
     <ClCompile Include="histohtml.cpp" />
     <ClCompile Include="loadfile.cpp" />
@@ -37,6 +38,7 @@
     <ClInclude Include="computeMenu.h" />
     <ClInclude Include="distinct.h" />
     <ClInclude Include="exporthtml.h" />
+    <ClInclude Include="geneRpt.h" />
     <ClInclude Include="histogram.h" />
     <ClInclude Include="histohtml.h" />
     <ClInclude Include="loadfile.h" />
