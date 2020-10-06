@@ -18,6 +18,7 @@ using namespace std;
 
 char mainMenu();
 void sortByColMenu(vector<string>, vector<vector<double>>&);
+bool exit();
 
 //open file
 string openFile(vector<string>&, vector<vector<double>>&, vector<vector<double>>&);
@@ -59,6 +60,16 @@ void sortByColMenu(vector<string> colName, vector<vector<double>>& data) {
 	displayData("Data Output", {}, colName, data);
 }
 
+bool exit() {
+	cout << "Are you sure you want to exit ?" << endl;
+	cout << "1. Yes" << endl;
+	cout << "2. No " << endl;
+
+	if (getChoice('1', '2') == '1')
+		return true;
+	return false;
+}
+
 int main() {
 	//initialize variable
 	vector<string> title;
@@ -80,7 +91,7 @@ int main() {
 		case '3': computeFunc(title, dataTp); break; //havent code
 		case '4': sortByColMenu(title, data); break;
 		case '5': cout << "Generate Report"; break;
-		case '6': return 0;
+		case '6': if (exit()) return 0;
 		}
 	}
 	return 0;
