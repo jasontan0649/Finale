@@ -91,6 +91,5 @@ string openFile(vector<string>& title, vector<vector<double>>& data, vector<vect
 	string fileName = loadFile(title, data);
 	dataTp = transposeV(data);
 	return fileName;
-	//testibg
 }
 
