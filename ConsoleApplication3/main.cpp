@@ -75,7 +75,7 @@ int main() {
 		clrScr();
 
 		switch (c) {
-		case '1': openFile(title, data, dataTp); break;
+		case '1': fileName = openFile(title, data, dataTp); break;
 		case '2': displayData("Data Output", {}, title, data); break;
 		case '3': computeFunc(title, dataTp); break; //havent code
 		case '4': sortByColMenu(title, data); break;
