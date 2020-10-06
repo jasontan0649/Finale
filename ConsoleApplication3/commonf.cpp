@@ -20,9 +20,11 @@
 
 using namespace std;
 
+//Tan Kai Yuan
 bool isNum(string);
 double round(double, int pre = 0);
 
+//Chan Yun Hong
 string strRepeat(string, int);
 string toStr(double, int pre = -1); //custom build to string function
 string spaceNeeded(int);
@@ -30,12 +32,10 @@ string center(int, string);
 string ljust(int, string);
 string rjust(int, string);
 
-//finf max size(length) in vector
-int findMaxInVect(vector<string>);
+int findMaxInVect(vector<string>); //find max size(length) in vector
+vector<string> vectDoubleString(vector<double>); //vector double to string
 
-//vector double to string
-vector<string> vectDoubleString(vector<double>);
-
+//Tan Kai Yuan
 //transpose vector
 vector<vector<double>> transposeV(vector<vector<double>>);
 vector<vector<string>> transposeV(vector<vector<string>>);
@@ -47,6 +47,7 @@ void sortByRow(vector<vector<double>>&, int);
 //system function
 void clrScr();
 
+//Boe Chang Horn
 //Menu function
 char getCh();
 char getChoice(char, char);

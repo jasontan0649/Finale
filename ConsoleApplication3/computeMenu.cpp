@@ -2,26 +2,21 @@
 
 #include <vector>
 #include <string>
-#include <cmath>
 #include <functional>
+#include <iostream>
 
 //common function
 #include "commonf.h"
 
-//export data and table
-#include "exporthtml.h"
-#include "table.h" 
-#include "LRAndPearsonHtml.h"
-
+//Display Data Function
+#include "display.h"
 
 //maths function
 #include "statistic.h"
 #include "distinct.h"
 #include "LRAndPearson.h"
-
-//histogram function
 #include "histogram.h"
-#include "histohtml.h"
+
 
 using namespace std;
 
@@ -37,18 +32,12 @@ void distinctMenu(vector<string>, vector<vector<double>>);
 
 //Generate Histogram
 void histogramMenu(vector<string>, vector<vector<double>>);
-void displayHisto(string, vector<string>, vector<int>, string, int);
 
 //data above and below mean
 void abvBlwMean(vector<string>, vector<double>, vector<vector<double>>);
-void showMeanTable(string, double, vector<vector<double>>, vector<double>, vector<double>, vector<double>, vector<double>);
-void displayTwoTable(string, double, vector<vector<double>>, vector<double>, vector<double>, vector<double>, vector<double>);
 
 //Pearson correlation //LR
 void pearsonAndLRMenu(vector<string>, vector<double>, vector<vector<double>>);
-void PCLRPrompt(vector<string>, vector<vector<double>>, vector<string>&, vector<vector<double>>&);
-vector<vector<string>> getPCLRData(vector<double>, vector<vector<double>>);
-void displayPCLROutput(string, vector<string>, vector<string>, vector<vector<string>>, vector<vector<double>>, double, double, double);
 
 
 char computeMenu() {  //print compute menu and get user input
@@ -155,44 +144,6 @@ void abvBlwMean(vector<string> title, vector<double> id, vector<vector<double>> 
 }
 // ================================================================
 
-void showMeanTable(string title, double meanRes, vector<vector<double>> cmb, vector<double> blwID, vector<double> blwData, vector<double> abvID, vector<double> abvData) {		// show 2 tables, above & below mean in prompt
-	cout << endl << "The mean is " << meanRes << endl << endl;
-
-	PrintTableByVect("Above", {}, { "ID", title }, transposeV({ abvID, abvData }));
-	cout << endl;
-	PrintTableByVect("Below", {}, { "ID", title }, transposeV({ blwID, blwData }));
-	cout << endl;
-}
-
-void displayTwoTable(string title, double meanRes, vector<vector<double>> cmb, vector<double> blwID, vector<double> blwData, vector<double> abvID, vector<double> abvData) {			// made just for mean, as it requires 2 tables
-	// output the 2 tables in HTML (using the extra mode parameter)
-	exportHTML(title + " Mean.html", title + " Above mean", {}, { "ID", title }, transposeV({ abvID, abvData }), "The mean is " + toStr(meanRes), "new");
-	exportHTML(title + " Mean.html", title + " Below Mean", {}, { "ID", title }, transposeV({ blwID, blwData }), "", "last");
-
-	ofstream dataOut;		// from here below, output in .txt
-	dataOut.open(title + " Mean.txt"); 	//cout title
-	dataOut << title << " mean" << endl;
-
-	streambuf* psbuf, * backup;		// use buffer to output 2tables in .txt
-	backup = cout.rdbuf();
-	psbuf = dataOut.rdbuf();
-	cout.rdbuf(psbuf);
-
-	showMeanTable(title, meanRes, cmb, blwID, blwData, abvID, abvData);
-
-	cout.rdbuf(backup);
-	cout << "Data has been exported. Please press any key to continue" << endl;
-	char null = getCh();
-}
-
-void displayHisto(string title, vector<string> markRange, vector<int> freq, string starUnit, int n) {		// output histogram table
-
-	histogramHTML(title + "\'s histogram.html", title, markRange, freq, starUnit, n);
-	exportHistoTxt(title + "\'s histogram.txt", title, markRange, freq, starUnit, n);
-
-	cout << "Data has been exported. Please press any key to continue" << endl;
-	char null = getCh();
-}
 
 void histogramMenu(vector<string> title, vector<vector<double>> data) {
 	cout << "Generate Histogram" << endl;
@@ -228,59 +179,7 @@ void pearsonAndLRMenu(vector<string> title, vector<double> id, vector<vector<dou
 	vector <string> colName = { "ID","X","Y","XY","X**2","Y**2" };
 	vector<vector<string>> strVect = getPCLRData(id, selData);
 	//Display Table
+	
 	displayPCLROutput(mainTitle, rowName, colName, strVect, selData, r, m, b);
-
-	exportPCLRHtml(mainTitle + "\'s PearsonCorr&LinearRegre.html", mainTitle, rowName, colName, strVect, dataY, dataX, r, m, b);
-	exportPCLRTxt(mainTitle + "\'s PearsonCorr&LinearRegre.txt", mainTitle, rowName, colName, strVect, dataY, dataX, r, m, b);
-
-	cout << "Data has been exported. Please press any key to continue" << endl;
-	getCh();
 }
 
-vector<vector<string>> getPCLRData(vector<double> id, vector<vector<double>> selData) {
-	// Append data into 2d vector and then transpose it to be able to display properly
-	vector<double> dataX = selData[0];
-	vector<double> dataY = selData[1];
-	vector<double> realProductXY = productXY(dataX, dataY);
-	vector<double> sqVectX = sqVect(dataX);
-	vector<double> sqVectY = sqVect(dataY);
-
-	vector<vector<double>> finalData = transposeV({ id,dataX,dataY,realProductXY,sqVectX,sqVectY });
-	// Append the data at last row
-	finalData.push_back({ sum(dataX),sum(dataY),sum(realProductXY),sum(sqVectX),sum(sqVectY) });
-
-	vector<vector<string>> strVect = convertDVectToSVect(finalData);
-	//Insert blank space
-	strVect.back().insert(strVect.back().begin(), "");
-
-	strVect.back().resize(6);
-
-	return strVect;
-}
-
-void displayPCLROutput(string mainTitle, vector<string>rowName, vector<string>colName, vector<vector<string>>strVect, vector<vector<double>>selData, double r, double m, double b) {
-	cout << endl;
-	PrintTableByVect(mainTitle, rowName, colName, strVect);
-	printComputationOfPC(selData[1], selData[0], r);
-	printComputationOfLR(selData[1], selData[0], r, m, b);
-	cout << endl;
-}
-
-//PearsonLR Menu Input Prompt
-void PCLRPrompt(vector<string> title, vector<vector<double>> data, vector<string>& selTitle, vector<vector<double>>& selData) {
-	string prompt = "XY";
-	cout << "Pearson Correlation and Linear Regression" << endl;
-	for (int i = 0; i < 2; i++) { //get user input
-		//Ask user to determine whether which one Y Or X
-		cout << endl << "Please pick for " << prompt[i] << " axis\n" << endl;
-
-		int n = selVector(title);
-		selTitle.push_back(title[n]);
-		selData.push_back(data[n]);
-
-		//remove select data
-		title.erase(title.begin() + n);
-		data.erase(data.begin() + n);
-	}
-	return;
-}

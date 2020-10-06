@@ -17,6 +17,10 @@ string linearRegression(vector<double>, vector<double>, double, double, double);
 void printComputationOfPC(vector<double>, vector<double>, double);
 void printComputationOfLR(vector<double>, vector<double>, double, double, double);
 
+//Prompt
+void PCLRPrompt(vector<string>, vector<vector<double>>, vector<string>&, vector<vector<double>>&);
+vector<vector<string>> getPCLRData(vector<double>, vector<vector<double>>);
+
 //Export into txt file
 void exportPCLRTxt(string, string, vector<string>, vector<string>, vector<vector<string>>, vector<double>, vector<double>, double, double, double);
 

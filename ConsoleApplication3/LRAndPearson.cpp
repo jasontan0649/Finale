@@ -21,6 +21,10 @@ string linearRegression(vector<double>, vector<double>, double, double, double);
 void printComputationOfPC(vector<double>, vector<double>, double);
 void printComputationOfLR(vector<double>, vector<double>, double, double, double);
 
+//Prompt
+void PCLRPrompt(vector<string>, vector<vector<double>>, vector<string>&, vector<vector<double>>&);
+vector<vector<string>> getPCLRData(vector<double>, vector<vector<double>>);
+
 //Export into txt file
 void exportPCLRTxt(string, string, vector<string>, vector<string>, vector<vector<string>>, vector<double>, vector<double>, double, double, double);
 
@@ -28,7 +32,7 @@ void exportPCLRTxt(string, string, vector<string>, vector<string>, vector<vector
 vector<double> sqVect(vector<double> arr)
 {
 	vector<double> squares;
-	for (double n : squares) {
+	for (double n : arr) {
 		squares.push_back(n * n);
 	}
 	return squares;
@@ -91,6 +95,47 @@ void printComputationOfLR(vector<double> arrY, vector<double>  arrX, double r, d
 	cout << "   b = " << mean(arrY) << " - (" << toStr(m, 2) << "*" << (mean(arrX)) << ")" << endl;
 	cout << "     = " << toStr(b, 2) << endl << endl;
 	cout << "   " << linearRegression(arrY, arrX, r, m, b) << endl << endl;
+}
+
+//PearsonLR Menu Input Prompt
+void PCLRPrompt(vector<string> title, vector<vector<double>> data, vector<string>& selTitle, vector<vector<double>>& selData) {
+	string prompt = "XY";
+	cout << "Pearson Correlation and Linear Regression" << endl;
+	for (int i = 0; i < 2; i++) { //get user input
+		//Ask user to determine whether which one Y Or X
+		cout << endl << "Please pick for " << prompt[i] << " axis\n" << endl;
+
+		int n = selVector(title);
+		selTitle.push_back(title[n]);
+		selData.push_back(data[n]);
+
+		//remove select data
+		title.erase(title.begin() + n);
+		data.erase(data.begin() + n);
+	}
+	return;
+}
+
+vector<vector<string>> getPCLRData(vector<double> id, vector<vector<double>> selData) {
+	// Append data into 2d vector and then transpose it to be able to display properly
+	vector<double> dataX = selData[0];
+	vector<double> dataY = selData[1];
+	vector<double> realProductXY = productXY(dataX, dataY);
+	vector<double> sqVectX = sqVect(dataX);
+	vector<double> sqVectY = sqVect(dataY);
+
+	vector<vector<double>> finalData{ id,dataX,dataY,realProductXY,sqVectX,sqVectY };
+	finalData = transposeV(finalData);
+	// Append the data at last row
+	finalData.push_back({ sum(dataX),sum(dataY),sum(realProductXY),sum(sqVectX),sum(sqVectY) });
+
+	vector<vector<string>> strVect = convertDVectToSVect(finalData);
+	//Insert blank space
+	strVect.back().insert(strVect.back().begin(), "");
+
+	strVect.back().resize(6);
+
+	return strVect;
 }
 
 //Export into txt file and html file

@@ -3,8 +3,6 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <algorithm>
-#include <functional>
 
 //common function
 #include "commonf.h" 
@@ -25,7 +23,7 @@ char mainMenu();
 bool exit();
 
 /*
-Display and Export Data in another cpp 
+Display and Export Data in another cpp
 & Computation Menu in computeMenu.cpp
 */
 
@@ -65,7 +63,11 @@ void sortByColMenu(vector<string> colName, vector<vector<double>>& data) {
 	cout << "2. Decending " << endl << endl;
 
 	if (getChoice('1', '2') == '2') //reverse the vector if descending
-		reverse(data.begin(), data.end());
+		for (int i = 0; i < data.size() / 2; i++) {
+			vector<double> tmp = data[i];
+			data[i] = data[data.size() - i - 1];
+			data[data.size() - i - 1] = tmp;
+		}
 
 	clrScr();
 	displayData("Data Output", {}, colName, data);
@@ -106,7 +108,7 @@ int main() {
 		switch (c) {
 		case '1': fileName = openFile(title, data, dataTp); break;
 		case '2': displayData("Data Output", {}, title, data); break;
-		case '3': computeFunc(title, dataTp); break; 
+		case '3': computeFunc(title, dataTp); break;
 		case '4': sortByColMenu(title, data); break;
 		case '5': geneReport(title, dataTp); break;
 		case '6': if (exit()) return 0;
