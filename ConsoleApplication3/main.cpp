@@ -1,10 +1,8 @@
 //Done by Tan Kai Yuan
 
-
 #include <iostream>
 #include <vector>
 #include <string>
-#include <functional>
 #include <algorithm>
 
 //common function
@@ -93,5 +91,6 @@ string openFile(vector<string>& title, vector<vector<double>>& data, vector<vect
 	string fileName = loadFile(title, data);
 	dataTp = transposeV(data);
 	return fileName;
+	//testibg
 }
 
