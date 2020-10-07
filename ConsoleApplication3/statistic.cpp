@@ -19,7 +19,7 @@ void sort(vector<double>&);
 double sum(vector<double> arr) {
     double sum = 0;
 
-    for (int i = 0; i < arr.size(); i++) {
+    for (size_t i = 0; i < arr.size(); i++) {
         sum += arr[i];
     }
 
@@ -41,7 +41,7 @@ void sort(vector<double>& arr) {
 double minVect(vector<double> arr) {
     double res = arr[0];
     
-    for (int i = 1; i < arr.size(); i++)
+    for (size_t i = 1; i < arr.size(); i++)
         if (res > arr[i])
             res = arr[i];
     return res;
@@ -50,7 +50,7 @@ double minVect(vector<double> arr) {
 double maxVect(vector<double> arr) {
     double res = arr[0];
 
-    for (int i = 1; i < arr.size(); i++)
+    for (size_t i = 1; i < arr.size(); i++)
         if (arr[i] > res)
             res = arr[i];
     return res;
@@ -73,9 +73,9 @@ double mean(vector<double> arr) {
 double variance(vector<double> arr) {
     double meanRes = mean(arr); //get mean
     double sumNum = 0;
-    const int size = arr.size();
+    const size_t size = arr.size();
 
-    for (int i = 0; i < size; i++) {
+    for (size_t i = 0; i < size; i++) {
         double tmp = arr[i] - meanRes;
         sumNum += tmp * tmp;
     }

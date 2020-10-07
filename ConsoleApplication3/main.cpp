@@ -66,7 +66,7 @@ void sortByColMenu(vector<string> colName, vector<vector<double>>& data) {
 	cout << "2. Decending " << endl << endl;
 
 	if (getChoice('1', '2') == '2') //reverse the vector if descending
-		for (int i = 0; i < data.size() / 2; i++) {
+		for (size_t i = 0; i < data.size() / 2; i++) {
 			vector<double> tmp = data[i];
 			data[i] = data[data.size() - i - 1];
 			data[data.size() - i - 1] = tmp;

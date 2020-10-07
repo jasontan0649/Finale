@@ -49,7 +49,7 @@ double findMaxBetweenTwoNums(int a, int b) {
 string joinVect(vector<string> vect, string delimiters) {
 	string newStr = "";
 
-	for (int i = 0; i < vect.size() - 1; i++)
+	for (size_t i = 0; i < vect.size() - 1; i++)
 		newStr += vect[i] + delimiters;
 
 	return newStr + vect.back();
@@ -57,11 +57,11 @@ string joinVect(vector<string> vect, string delimiters) {
 
 vector<int> getColMaxLength(vector<string> colNames, vector<vector<string>> strData) {
 	vector<int> colMaxLen;
-	for (int i = 0; i < colNames.size(); i++)
+	for (size_t i = 0; i < colNames.size(); i++)
 		colMaxLen.push_back(colNames[i].size());
 
-	for (int i = 0; i < strData.size(); i++)
-		for (int j = 0; j < strData[i].size(); j++)
+	for (size_t i = 0; i < strData.size(); i++)
+		for (size_t j = 0; j < strData[i].size(); j++)
 			colMaxLen[j] = findMaxBetweenTwoNums(colMaxLen[j], strData[i][j].size());
 
 	return colMaxLen;
@@ -76,7 +76,7 @@ vector<string> getHeader(vector<string> colNames, bool noRowNames, vector<int> c
 	else
 		tableStart = { strRepeat(" ", rowMaxLen) };
 
-	for (int i = 0; i < colNames.size(); i++) {
+	for (size_t i = 0; i < colNames.size(); i++) {
 		string colNamesCenterJustified = center(colMaxLen[i], colNames[i]);
 		colNameStart.push_back(colNamesCenterJustified);
 	}
@@ -90,11 +90,11 @@ vector<string> getHeader(vector<string> colNames, bool noRowNames, vector<int> c
 
 string getBorder(vector<string> header) {
 	vector<int> headerNameLength;
-	for (int i = 0; i < header.size(); i++)
+	for (size_t i = 0; i < header.size(); i++)
 		headerNameLength.push_back(header[i].size());
 
 	vector<string> colBorder;
-	for (int i = 0; i < headerNameLength.size(); i++)
+	for (size_t i = 0; i < headerNameLength.size(); i++)
 		colBorder.push_back(strRepeat("-", headerNameLength[i]));
 
 	//Join colBorder by "-+-"
@@ -168,7 +168,7 @@ void printTableData(bool noRowNames, int rowMaxLen, vector<string>rowNames, vect
 	//Show all rows of data
 	string finalRowStr;
 	string colStrLeftJustified;
-	for (int row = 0; row < strData.size(); row++) {
+	for (size_t row = 0; row < strData.size(); row++) {
 		//Create row string
 		//Add row name as the first element in rowStr
 		vector<string> rowStr;
@@ -181,7 +181,7 @@ void printTableData(bool noRowNames, int rowMaxLen, vector<string>rowNames, vect
 		}
 
 		//Add column data from strData[row]
-		for (int col = 0; col < strData[row].size(); col++) {
+		for (size_t col = 0; col < strData[row].size(); col++) {
 			colStrLeftJustified = ljust(colMaxLen[col], strData[row][col]);
 			rowStr.push_back(colStrLeftJustified);
 		}

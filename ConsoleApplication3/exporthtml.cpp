@@ -80,20 +80,20 @@ void tableHTML(vector<string> th, vector<string> col, vector<vector<string>> dat
 }
 
 void thTable(vector<string> th, ofstream& dataOut) {			// display ID & title(s)
-	for (int i = 0; i < th.size(); i++) {
+	for (size_t i = 0; i < th.size(); i++) {
 		dataOut << "\t\t\t<th>" << th[i] << "</th>" << endl;
 	}
 }
 
 void tdTable(vector<vector<string>> data, vector<string> col, ofstream& dataOut) {		// display data of table
-	for (int i = 0; i < data.size(); i++) {
+	for (size_t i = 0; i < data.size(); i++) {
 		dataOut << "\t\t<tr>" << endl;
 		//Added for col
 		if (!col.empty()) {
 			dataOut << "\t\t\t<td>" << col[i] << "</td>" << endl;
 		}
 		//Added for col ended
-		for (int j = 0; j < data[i].size(); j++) {
+		for (size_t j = 0; j < data[i].size(); j++) {
 			dataOut << "\t\t\t<td style=\"text-align:right;\">";
 			dataOut << data[i][j] << "</td>" << endl;
 		}

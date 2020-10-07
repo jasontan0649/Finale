@@ -16,7 +16,7 @@ void distinctNum(vector<double> vect, vector<double>& res, vector<int>& count) {
 	res.push_back(vect[0]);
 	count.push_back(1);
 
-	for (int i = 1; i < vect.size(); i++) {
+	for (size_t i = 1; i < vect.size(); i++) {
 		if (res.back() == vect[i]) {
 			count.back()++;
 		}

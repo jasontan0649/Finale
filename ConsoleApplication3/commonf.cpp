@@ -63,7 +63,7 @@ bool isNum(string s) {
 }
 
 double round(double val, int pre) {
-	long tmp = (val * pow(10, pre) + 0.5); // get value of ceiling of val*10^pre
+	long tmp = (long double(val) * pow(10, pre) + 0.5); // get value of ceiling of val*10^pre
 	return (long double)tmp / pow(10, pre); //return the rounded value base on precision
 }
 
@@ -96,7 +96,7 @@ string spaceNeeded(int val) {
 string center(int val, string str) {
 	int spaceAllowed = val - str.size();
 	double pad = spaceAllowed / 2.0;
-	double leftPad, rightPad;
+	int leftPad, rightPad;
 
 	leftPad = floor(pad);
 	rightPad = ceil(pad);
@@ -116,8 +116,8 @@ string rjust(int val, string str) {
 
 //Max Function
 int findMaxInVect(vector<string> arr) {
-	int res = arr[0].size();
-	for (int i = 1; i < arr.size(); i++)
+	size_t res = arr[0].size();
+	for (size_t i = 1; i < arr.size(); i++)
 		if (arr[i].size() > res)
 			res = arr[i].size();
 

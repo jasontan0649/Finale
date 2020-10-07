@@ -98,9 +98,9 @@ void statMenu(vector<string> title, vector<vector<double>> data) {
 		selFuncName.push_back(funcName[j]);
 	}
 
-	for (int i = 0; i < selFunc.size(); i++) { // run computation function
+	for (size_t i = 0; i < selFunc.size(); i++) { // run computation function
 		res.emplace_back();
-		for (int j = 0; j < tmp.size(); j++)
+		for (size_t j = 0; j < tmp.size(); j++)
 			res.back().push_back(selFunc[i](tmp[j]));
 	}
 	//display result
