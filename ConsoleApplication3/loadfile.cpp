@@ -111,13 +111,15 @@ bool getData(ifstream& f, vector<vector<double>>& data) {
 
 bool isColRowMatch(vector<vector<double>> data, int col, int row) {
 	if (row != data.size()) {
-		cout << "Data row does not match with given input\nPlease try again" << endl;
+		cout << "Expected " << row << " rows, but " << data.size() << " were given." << endl;
+		cout << "Please try again" << endl;
 		return false;
 	}
 
 	for (auto item : data)
 		if (col != item.size()) {
-			cout << "Data column does not match with given input\nPlease try again" << endl;
+			cout << "Expected " << col << " columns, but " << item.size() << " were give." << endl;
+			cout << "Please try again" << endl;
 			return false;
 		}
 

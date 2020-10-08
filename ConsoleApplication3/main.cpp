@@ -73,7 +73,7 @@ void sortByColMenu(vector<string> colName, vector<vector<double>>& data) {
 		}
 
 	clrScr();
-	displayData("Data Output", {}, colName, data);
+	displayData("Data Output sorted:" + colName[i], {}, colName, data);
 }
 
 bool exit() {

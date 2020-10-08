@@ -29,7 +29,6 @@ void displayTwoTable(string, double, vector<vector<double>>, vector<double>, vec
 void displayPCLROutput(string, vector<string>, vector<string>, vector<vector<string>>, vector<vector<double>>, double, double, double);
 
 
-
 void displayData(string title, vector<string> row, vector<string> col, vector<vector<double>> data) {
 	PrintTableByVect(title, row, col, data); //display data
 	cout << endl;
@@ -50,7 +49,6 @@ void displayHisto(string title, vector<string> markRange, vector<int> freq, stri
 	cout << "Data has been exported. Please press any key to continue" << endl;
 	char null = getCh();
 }
-
 
 
 void showMeanTable(string title, double meanRes, vector<vector<double>> cmb, vector<double> blwID, vector<double> blwData, vector<double> abvID, vector<double> abvData) {		// show 2 tables, above & below mean in prompt

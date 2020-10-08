@@ -1,4 +1,4 @@
-//Done by Tan Kai Yuan
+//Done by Tan Kai Yuan, Boe Chang Horn, Chan Yun Hong
 
 #include <vector>
 #include <string>
@@ -20,6 +20,7 @@
 
 using namespace std;
 
+//Tan Kai Yuan
 //compute function
 char computeMenu();
 void computeFunc(vector<string>, vector<vector<double>>);
@@ -30,12 +31,14 @@ void statMenu(vector<string>, vector<vector<double>>);
 //Distinct function and menu
 void distinctMenu(vector<string>, vector<vector<double>>);
 
+//Boe Chang Horn
 //Generate Histogram
 void histogramMenu(vector<string>, vector<vector<double>>);
 
 //data above and below mean
 void abvBlwMean(vector<string>, vector<double>, vector<vector<double>>);
 
+//Chan Yun Hong
 //Pearson correlation //LR
 void pearsonAndLRMenu(vector<string>, vector<double>, vector<vector<double>>);
 
@@ -179,7 +182,7 @@ void pearsonAndLRMenu(vector<string> title, vector<double> id, vector<vector<dou
 	vector <string> colName = { "ID","X","Y","XY","X**2","Y**2" };
 	vector<vector<string>> strVect = getPCLRData(id, selData);
 	//Display Table
-	
+
 	displayPCLROutput(mainTitle, rowName, colName, strVect, selData, r, m, b);
 }
 

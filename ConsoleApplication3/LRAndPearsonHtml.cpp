@@ -46,15 +46,15 @@ void PCHtml(vector<double> arrY, vector<double> arrX, double r, ofstream& dataOu
 
 	dataOut << "<p>" << "1. Pearson’s Correlation" << "</p>" << endl << endl;
 	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;r = (" << numOfData << "*" << sum(productXY(arrY, arrX)) << " - " << sumArrY << "*" << sumArrX << ") / sqrt((" << numOfData << "*" << sum(sqVect(arrY)) << " - " << sumArrY << "*" << sumArrY << ") * (" << numOfData << "*" << sum(sqVect(arrX)) << " - " << sumArrX << "*" << sumArrX << "))" << "</p>" << endl;
-	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= " << toStr(r, 2) << "</p>" << endl << endl;
+	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= " << toStr(r) << "</p>" << endl << endl;
 
 }
 void LRHtml(vector<double> arrY, vector<double>  arrX, double r, double m, double b, ofstream& dataOut) {
 
 	dataOut << "<p>" << "2. Linear Regression" << "</p>" << endl << endl;
-	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;m = " << toStr(r, 2) << " * " << "(" << sd(arrY) << " / " << sd(arrX) << ")" << "</p>" << endl;
-	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= " << toStr(m, 2) << "</p>" << endl << endl;
-	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;b = " << mean(arrY) << " - (" << toStr(m, 2) << " * " << (mean(arrX)) << ")" << "</p>" << endl;
-	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= " << toStr(b, 2) << "</p>" << endl << endl;
+	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;m = " << toStr(r) << " * " << "(" << sd(arrY) << " / " << sd(arrX) << ")" << "</p>" << endl;
+	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= " << toStr(m) << "</p>" << endl << endl;
+	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;b = " << mean(arrY) << " - (" << toStr(m) << " * " << (mean(arrX)) << ")" << "</p>" << endl;
+	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= " << toStr(b) << "</p>" << endl << endl;
 	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;" << linearRegression(arrY, arrX, r, m, b) << "</p>" << endl << endl;
 }

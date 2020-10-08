@@ -80,7 +80,7 @@ double variance(vector<double> arr) {
         sumNum += tmp * tmp;
     }
 
-    return sumNum / (size - 1);
+    return sumNum / size;
 }
 
 double sd(vector<double> arr){
