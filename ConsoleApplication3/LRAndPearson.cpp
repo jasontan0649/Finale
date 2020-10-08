@@ -83,16 +83,16 @@ void printComputationOfPC(vector<double> arrY, vector<double>  arrX, double r) {
 	double sumArrX = sum(arrX);
 
 	cout << "1. Pearson\u0027s Correlation" << endl << endl;
-	cout << "   r = (" << numOfData << "*" << sum(productXY(arrY, arrX)) << " - " << sumArrY << "*" << sumArrX << ")/ sqrt((" << numOfData << "*" << sum(sqVect(arrY)) << " - " << sumArrY << "*" << sumArrY << ") * (" << numOfData << "*" << sum(sqVect(arrX)) << " - " << sumArrX << "*" << sumArrX << "))" << endl;
+	cout << "   r = (" << toStr(numOfData) << "*" << toStr(sum(productXY(arrY, arrX))) << " - " << toStr(sumArrY) << "*" << toStr(sumArrX) << ")/ sqrt((" << toStr(numOfData) << "*" << toStr(sum(sqVect(arrY))) << " - " << toStr(sumArrY) << "*" << toStr(sumArrY) << ") * (" << toStr(numOfData) << "*" << toStr(sum(sqVect(arrX))) << " - " << toStr(sumArrX) << "*" << toStr(sumArrX) << "))" << endl;
 	cout << "     = " << toStr(r) << endl << endl;
 
 }
 void printComputationOfLR(vector<double> arrY, vector<double>  arrX, double r, double m, double b) {
 
 	cout << "2. Linear Regression" << endl << endl;
-	cout << "   m = " << toStr(r) << " * " << "(" << sd(arrY) << "/" << sd(arrX) << ")" << endl;
+	cout << "   m = " << toStr(r) << " * " << "(" << toStr(sd(arrY)) << "/" << toStr(sd(arrX)) << ")" << endl;
 	cout << "     = " << toStr(m) << endl << endl;
-	cout << "   b = " << mean(arrY) << " - (" << toStr(m) << "*" << (mean(arrX)) << ")" << endl;
+	cout << "   b = " << toStr(mean(arrY)) << " - (" << toStr(m) << "*" << toStr(mean(arrX)) << ")" << endl;
 	cout << "     = " << toStr(b) << endl << endl;
 	cout << "   " << linearRegression(arrY, arrX, r, m, b) << endl << endl;
 }

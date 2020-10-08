@@ -45,16 +45,16 @@ void PCHtml(vector<double> arrY, vector<double> arrX, double r, ofstream& dataOu
 	double sumArrX = sum(arrX);
 
 	dataOut << "<p>" << "1. Pearson’s Correlation" << "</p>" << endl << endl;
-	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;r = (" << numOfData << "*" << sum(productXY(arrY, arrX)) << " - " << sumArrY << "*" << sumArrX << ") / sqrt((" << numOfData << "*" << sum(sqVect(arrY)) << " - " << sumArrY << "*" << sumArrY << ") * (" << numOfData << "*" << sum(sqVect(arrX)) << " - " << sumArrX << "*" << sumArrX << "))" << "</p>" << endl;
+	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;r = (" << toStr(numOfData) << "*" << toStr(sum(productXY(arrY, arrX))) << " - " << toStr(sumArrY) << "*" << toStr(sumArrX) << ") / sqrt((" << toStr(numOfData) << "*" << toStr(sum(sqVect(arrY))) << " - " << toStr(sumArrY) << "*" << toStr(sumArrY) << ") * (" << toStr(numOfData) << "*" << toStr(sum(sqVect(arrX))) << " - " << toStr(sumArrX) << "*" << toStr(sumArrX) << "))" << "</p>" << endl;
 	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= " << toStr(r) << "</p>" << endl << endl;
 
 }
 void LRHtml(vector<double> arrY, vector<double>  arrX, double r, double m, double b, ofstream& dataOut) {
 
 	dataOut << "<p>" << "2. Linear Regression" << "</p>" << endl << endl;
-	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;m = " << toStr(r) << " * " << "(" << sd(arrY) << " / " << sd(arrX) << ")" << "</p>" << endl;
+	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;m = " << toStr(r) << " * " << "(" << toStr(sd(arrY)) << " / " << toStr(sd(arrX)) << ")" << "</p>" << endl;
 	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= " << toStr(m) << "</p>" << endl << endl;
-	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;b = " << mean(arrY) << " - (" << toStr(m) << " * " << (mean(arrX)) << ")" << "</p>" << endl;
+	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;b = " << mean(arrY) << " - (" << toStr(m) << " * " << toStr(mean(arrX)) << ")" << "</p>" << endl;
 	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= " << toStr(b) << "</p>" << endl << endl;
 	dataOut << "<p>" << "&nbsp;&nbsp;&nbsp;&nbsp;" << linearRegression(arrY, arrX, r, m, b) << "</p>" << endl << endl;
 }
