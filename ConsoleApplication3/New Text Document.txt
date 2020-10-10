@@ -1,0 +1,1 @@
+g++ -o bossku.exe commonf.cpp computeMenu.cpp display.cpp distinct.cpp exporthtml.cpp geneRpt.cpp histogram.cpp histohtml.cpp loadfile.cpp LRandPearson.cpp LRAndPearsonHTML.cpp main.cpp statistic.cpp table.cpp

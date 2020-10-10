@@ -63,7 +63,7 @@ bool isNum(string s) {
 }
 
 double round(double val, int pre) {
-	long tmp = (long double(val) * pow(10, pre) + 0.5); // get value of ceiling of val*10^pre
+	long tmp = ((long double)val * pow(10, pre) + 0.5); // get value of ceiling of val*10^pre
 	return (long double)tmp / pow(10, pre); //return the rounded value base on precision
 }
 

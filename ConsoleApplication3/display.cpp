@@ -17,6 +17,15 @@
 using namespace std;
 
 //Tan Kai Yuan
+/*
+Programmer: Tan Kai Yuan
+Name:		displayData
+
+task:		call print table function to display data and export output to HTML,txt
+data in:	output title, vector of row, vector of col, 2D vector of data
+
+data out:	N/A
+*/
 void displayData(string, vector<string>, vector<string>, vector<vector<double>>);
 
 //Boe Chang Horn
