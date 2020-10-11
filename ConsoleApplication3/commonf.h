@@ -9,6 +9,28 @@ using namespace std;
 
 /*
 Programmer: Tan Kai Yuan
+Name:		strUpper
+
+task:		convert string to upper
+data in:	string to convert
+
+data out:	return uppercase string
+*/
+string strUpper(string);
+
+/*
+Programmer: Tan Kai Yuan
+Name:		strLower
+
+task:		convert string to lower
+data in:	string to convert
+
+data out:	return lowercase string
+*/
+string strLower(string);
+
+/*
+Programmer: Tan Kai Yuan
 Name:		isNum
 
 task:		Check string is a number
@@ -186,7 +208,24 @@ data out:	_getch() value
 char getCh();
 
 //Menu function
+/*
+Programmer: Boe Chang Horn
+Name:		getChoice
+
+task:		get input from certain input range, loop while not desire range
+data in:	lower limit char, upper limit char
+
+data out:	input char
+*/
 char getChoice(char, char);
+/*
+Programmer: Boe Chang Horn
+Name:		selVector
+
+task:		select from a string vector
+data in:	string vector, extra option
+data out:	index of the selected vector element
+*/
 int selVector(vector<string>, string extra = "null");
 
 #endif

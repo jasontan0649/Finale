@@ -60,7 +60,7 @@ vector<string> outputStar(vector<int> count, int size) {
 	vector<string> star(10);
 
 	for (int i = 0; i < 10; i++) {
-		star[i] = rjust(20, strRepeat("*", count[i] / size));
+		star[i] = rjust(20, strRepeat("*", round(double(count[i]) / size)));
 	}
 
 	return star;

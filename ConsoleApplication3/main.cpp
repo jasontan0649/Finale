@@ -22,7 +22,25 @@
 using namespace std;
 
 //main menu function
+/*
+Programmer: Tan Kai Yuan
+Name:		mainMenu
+
+task:		Display main menu and return selection
+data in:	N/A
+
+data out:	selection
+*/
 char mainMenu();
+/*
+Programmer: Tan Kai Yuan
+Name:		exit
+
+task:		ask user if want to exit
+data in:	N/A
+
+data out:	True if exit
+*/
 bool exit();
 
 /*
@@ -31,9 +49,27 @@ Display and Export Data in another cpp
 */
 
 //sort data by column menu
+/*
+Programmer: Tan Kai Yuan
+Name:		sortByColMenu
+
+task:		ask user to sort by which column and call sortByCol to sort
+data in:	vector of column name, vector of column data
+
+data out:	N/A
+*/
 void sortByColMenu(vector<string>, vector<vector<double>>&);
 
 //open file
+/*
+Programmer: Tan Kai Yuan
+Name:		openFile
+
+task:		call loadFile function and tranpose the vector for computation
+data in:	vector of col Name, vector of 2D data, vector of 2D data forn transpose
+
+data out:	file name
+*/
 string openFile(vector<string>&, vector<vector<double>>&, vector<vector<double>>&);
 
 
@@ -73,7 +109,7 @@ void sortByColMenu(vector<string> colName, vector<vector<double>>& data) {
 		}
 
 	clrScr();
-	displayData("Data Output sorted:" + colName[i], {}, colName, data);
+	displayData("Data Sorted by " + colName[i], {}, colName, data);
 }
 
 bool exit() {

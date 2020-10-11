@@ -31,6 +31,12 @@ string loadFile(vector<string>& title, vector<vector<double>>& data) {
 		if (!getColTitleRow(f, col, title, row))//get column,title,row from file,check format
 			continue;
 
+		if (strUpper(title[0]) != "ID") {
+			cout << "Expected first column as ID, but " << title[0] << " appear" << endl;
+			cout << "Please try again" << endl;
+			continue;
+		}
+
 		if (!getData(f, data)) //get data from file, check format
 			continue;
 
@@ -60,7 +66,7 @@ bool getColTitleRow(ifstream& f, int& col, vector<string>& title, int& row) {
 	}
 
 	if (!getTitleRow(f, title) || title.size() != col) { //get title from
-		cout << "Columns do not match\nPlease try again" << endl;
+		cout << "Columns do not match or unexpected space\nPlease try again" << endl;
 		return false;
 	}
 

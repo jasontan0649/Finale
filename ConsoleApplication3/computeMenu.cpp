@@ -121,7 +121,7 @@ void distinctMenu(vector<string> title, vector<vector<double>> data) {
 
 	vector<double> doubleCount(count.begin(), count.end());
 
-	displayData("Distinct Number: " + selTitle, {}, { "Number", "Count" }, transposeV({ res, doubleCount }));
+	displayData("Distinct Number of " + selTitle, {}, { "Number", "Count" }, transposeV({ res, doubleCount }));
 }
 
 // AboveBelow Mean Calculation function ============================

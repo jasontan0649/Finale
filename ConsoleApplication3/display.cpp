@@ -17,15 +17,6 @@
 using namespace std;
 
 //Tan Kai Yuan
-/*
-Programmer: Tan Kai Yuan
-Name:		displayData
-
-task:		call print table function to display data and export output to HTML,txt
-data in:	output title, vector of row, vector of col, 2D vector of data
-
-data out:	N/A
-*/
 void displayData(string, vector<string>, vector<string>, vector<vector<double>>);
 
 //Boe Chang Horn
@@ -46,7 +37,7 @@ void displayData(string title, vector<string> row, vector<string> col, vector<ve
 	exportTxt(title + ".txt", title, row, col, data);
 
 	cout << "Data has been exported. Please press any key to continue" << endl;
-	getCh();
+	char null = getCh();
 }
 
 
@@ -106,5 +97,5 @@ void displayPCLROutput(string mainTitle, vector<string>rowName, vector<string>co
 	exportPCLRTxt(mainTitle + "\'s PearsonCorr&LinearRegre.txt", mainTitle, rowName, colName, strVect, dataY, dataX, r, m, b);
 
 	cout << "Data has been exported. Please press any key to continue" << endl;
-	getCh();
+	char null = getCh();
 }

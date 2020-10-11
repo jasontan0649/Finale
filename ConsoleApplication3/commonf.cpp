@@ -17,6 +17,8 @@
 using namespace std;
 
 //Tan Kai Yuan
+string strUpper(string);
+string strLower(string);
 bool isNum(string);
 double round(double, int pre = 0);
 
@@ -51,6 +53,22 @@ int selVector(vector<string>, string extra = "null");
 
 
 //common function
+//string to upper
+string strUpper(string s) {
+	string res = "";
+	for (char c : s)
+		res += toupper(c);
+	return res;
+}
+
+//string to lower
+string strLower(string s) {
+	string res = "";
+	for (char c : s)
+		res += tolower(c);
+	return res;
+}
+
 //to check is a number
 bool isNum(string s) {
 	int d = 0; //dot count
